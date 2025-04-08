@@ -23,12 +23,13 @@
 
 ## Description
 
-Take Home Riot Test, this is an API with 4 endpoints, encrypt, decrypt, sing and verify for JSON files.
+Take Home Riot Test, this is an API with 4 endpoints, encrypt, decrypt, sign and verify JSON files.
 
 ## Project setup
 
 ```bash
 $ yarn install
+$ cp ./env.example ./env
 ```
 
 ## Compile and run the project
@@ -49,9 +50,6 @@ $ yarn run start:prod
 ```bash
 # unit tests
 $ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
 
 # test coverage
 $ yarn run test:cov
