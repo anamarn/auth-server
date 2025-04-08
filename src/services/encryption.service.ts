@@ -8,7 +8,7 @@ export class EncryptionService {
     ENCRYPTION_ALGORITHMS_ENUM.BASE_64;
   constructor() {}
 
-  encryptJSON(decryptedJSON: JSONObject): Record<string, string> {
+  encryptJSON = (decryptedJSON: JSONObject): Record<string, string> => {
     const encryptedJSON = Object.fromEntries(
       Object.entries(decryptedJSON).map(([key, value]) => {
         const stringValue =
@@ -17,9 +17,9 @@ export class EncryptionService {
       }),
     );
     return encryptedJSON;
-  }
+  };
 
-  decryptJSON(encryptedJSON: JSONObject) {
+  decryptJSON = (encryptedJSON: JSONObject) => {
     const decryptedJSON = Object.fromEntries(
       Object.entries(encryptedJSON).map(([key, value]) => {
         if (typeof value === 'string' && this.isStringEncoded(value)) {
@@ -31,9 +31,9 @@ export class EncryptionService {
       }),
     );
     return decryptedJSON;
-  }
+  };
 
-  private decryptString(encryptedString: string): string {
+  private decryptString = (encryptedString: string): string => {
     switch (this.encryptionAlgorithm) {
       case ENCRYPTION_ALGORITHMS_ENUM.BASE_64:
         return Buffer.from(
@@ -43,9 +43,9 @@ export class EncryptionService {
       default:
         throw new Error(`Unsupported encryption algorithm`);
     }
-  }
+  };
 
-  private encryptString(decryptedString: string): string {
+  private encryptString = (decryptedString: string): string => {
     switch (this.encryptionAlgorithm) {
       case ENCRYPTION_ALGORITHMS_ENUM.BASE_64:
         return Buffer.from(decryptedString).toString(
@@ -54,9 +54,9 @@ export class EncryptionService {
       default:
         throw new Error(`Unsupported encryption algorithm`);
     }
-  }
+  };
 
-  private isStringEncoded(encodedString: string): boolean {
+  private isStringEncoded = (encodedString: string): boolean => {
     switch (this.encryptionAlgorithm) {
       case ENCRYPTION_ALGORITHMS_ENUM.BASE_64: {
         const base64Regex =
@@ -66,5 +66,5 @@ export class EncryptionService {
       default:
         throw new Error(`Unsupported encryption algorithm`);
     }
-  }
+  };
 }

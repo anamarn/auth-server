@@ -11,14 +11,14 @@ describe('AppController', () => {
 
   beforeEach(async () => {
     const mockEncryptionService = {
-      encryptJSON: jest.fn(),
-      decryptJSON: jest.fn(),
-    };
+      encryptJSON: jest.fn(() => {}),
+      decryptJSON: jest.fn(() => {}),
+    } as const;
 
     const mockSignatureService = {
-      signJSON: jest.fn(),
-      verifySignatureJSON: jest.fn(),
-    };
+      signJSON: jest.fn(() => {}),
+      verifySignatureJSON: jest.fn(() => {}),
+    } as const;
 
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AppController],

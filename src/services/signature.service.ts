@@ -16,19 +16,19 @@ export class SignatureService {
     }
     this.secretSigningKey = process.env.SIGN_SECRET;
   }
-  signJSON(json: JSONObject): { signature: string } {
+  signJSON = (json: JSONObject): { signature: string } => {
     const normalizedJSONString = JSON.stringify(normalizeJSON(json));
     const hmacSignature = this.computeSignature(normalizedJSONString);
     return { signature: hmacSignature };
-  }
+  };
 
-  verifySignatureJSON(json: VerifySignatureInput): boolean {
+  verifySignatureJSON = (json: VerifySignatureInput): boolean => {
     const normalizedJSONString = JSON.stringify(normalizeJSON(json.data));
     const hmacSignature = this.computeSignature(normalizedJSONString);
     return json.signature === hmacSignature;
-  }
+  };
 
-  private computeSignature(stringToSign: string): string {
+  private computeSignature = (stringToSign: string): string => {
     switch (this.signingAlgorithm) {
       case SIGNATURE_ALGORITHMS_ENUM.HMAC_SHA_256:
         return crypto
@@ -41,5 +41,5 @@ export class SignatureService {
       default:
         throw new Error(`Unsupported signing algorithm`);
     }
-  }
+  };
 }

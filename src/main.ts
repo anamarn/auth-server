@@ -20,4 +20,4 @@ async function bootstrap() {
   console.log(`API Docs are available at: http://localhost:${port}/api/docs`);
 }
 
-bootstrap();
+void bootstrap();

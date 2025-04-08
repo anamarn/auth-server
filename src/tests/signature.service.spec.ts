@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { SignatureService } from '../services/signature.service';
 import { SIGNATURE_ALGORITHMS_ENUM } from '../enums/signature-algorithms.enum';
-import { time } from 'console';
 
 describe('SignatureService', () => {
   let signatureService: SignatureService;
