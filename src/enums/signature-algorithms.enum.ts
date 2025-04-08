@@ -1,0 +1,3 @@
+export enum SIGNATURE_ALGORITHMS_ENUM {
+  HMAC_SHA_256 = 'sha256',
+}
